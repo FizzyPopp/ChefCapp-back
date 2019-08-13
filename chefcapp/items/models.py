@@ -56,6 +56,8 @@ class Step(models.Model):
     number = models.PositiveSmallIntegerField()
     description = models.CharField(max_length=256)
 
+    class Meta:
+        db_table = 'steps'
 
 class Recipe(models.Model):
     title = models.CharField(max_length=256)
