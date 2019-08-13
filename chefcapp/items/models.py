@@ -7,6 +7,9 @@ class Ingredient(models.Model):
     class Meta:
         db_table = 'ingredients'
 
+    def __str__(self):
+        return self.name
+
 
 class Unit(models.Model):
     milliliter = 'ml'
