@@ -3,7 +3,7 @@ from .models import Ingredient
 from .models import Recipe
 
 class YourAdmin(admin.ModelAdmin):
-    filter_horizontal = ('ingredient',)
+    filter_horizontal = ('ingredients',)
 
 
 admin.site.register(Recipe, YourAdmin)
