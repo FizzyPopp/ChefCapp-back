@@ -2,11 +2,11 @@ from django.contrib import admin
 from .models import Ingredient
 from .models import Recipe
 
-class IngredientAdmin(admin.ModelAdmin):
-    filter_horizontal = (Ingredient,)
+class YourAdmin(admin.ModelAdmin):
+    filter_horizontal = ('ingredient',)
 
 
-admin.site.register(Ingredient, IngredientAdmin)
-admin.site.register(Recipe)
+admin.site.register(Recipe, YourAdmin)
+admin.site.register(Ingredient)
 
 # Register your models here.
