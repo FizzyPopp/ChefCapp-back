@@ -21,6 +21,6 @@ urlpatterns = [
     path('api/', include('api.urls')),
 ]
 
-admin.site.site_header = "UMSRA Admin"
-admin.site.site_title = "UMSRA Admin Portal"
-admin.site.index_title = "Welcome to UMSRA Researcher Portal"
+admin.site.site_header = "Chef Capp Admin"
+admin.site.site_title = "Chef Capp Admin Portal"
+admin.site.index_title = "Welcome to Chef Capp Recipe Manager"
