@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Ingredient
 from .models import Recipe
 
-class IngredentAdmin(admin.ModelAdmin):
+class IngredientAdmin(admin.ModelAdmin):
     filter_horizontal = (Ingredient,)
 
 
