@@ -61,7 +61,7 @@ class Step(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=256, default='Recipe Title')
-    
+    ingredient = models.ManyToManyField(Ingredient)
     steps = models.ManyToManyField(Step)
 
     class Meta:
