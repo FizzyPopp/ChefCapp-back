@@ -12,27 +12,19 @@ class Ingredient(models.Model):
 
 
 class Unit(models.Model):
-    milliliter = 'ml'
-    grams = 'gr'
-    unspecified = ''
-
-    unit_choices = [
-        (milliliter, 'Milliliters'),
-        (grams, 'Grams'),
-        (unspecified, 'Unspecified')
-    ]
-
-    units = models.CharField(
-        max_length=2,
-        choices=unit_choices,
-        default=unspecified,
-    )
+    name = models.CharField(max_length=256, default='Full Name')
+    abbreviation = models.CharField(max_length=256, default='xx')
 
     class Meta:
         db_table = 'units'
 
+    def __str__(self):
+        return self.name
+
 
 class UnitIngredient(models.Model):
+    quantity = models.DecimalField(max_digits=6, decimal_places=2)
+
     unit = models.ForeignKey(
         Unit,
         on_delete=models.CASCADE,
@@ -42,6 +34,9 @@ class UnitIngredient(models.Model):
         Ingredient,
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return self.ingredient + ' - ' + self.quantity + ' ' + self.unit
 
 
 class Equipment(models.Model):
