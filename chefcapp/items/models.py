@@ -55,6 +55,9 @@ class Step(models.Model):
     class Meta:
         db_table = 'steps'
 
+    def __str__(self):
+        return self.title
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=256, default='Recipe Title')
@@ -63,3 +66,6 @@ class Recipe(models.Model):
 
     class Meta:
         db_table = 'recipes'
+
+    def __str__(self):
+        return self.title
