@@ -36,7 +36,7 @@ class UnitIngredient(models.Model):
     )
 
     def __str__(self):
-        return self.ingredient + ' - ' + self.quantity + ' ' + self.unit
+        return '{} - {} {}'.format(self.ingredient, self.quantity, self.unit)
 
 
 class Equipment(models.Model):
