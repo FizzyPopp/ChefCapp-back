@@ -9,7 +9,7 @@ class HorizontalRecipe(admin.ModelAdmin):
 
 
 class HorizontalStep(admin.ModelAdmin):
-    filter_horizontal = ('ingredients_for_step')
+    filter_horizontal = ('ingredients_for_step',)
 
 
 admin.site.register(Recipe, HorizontalRecipe)
