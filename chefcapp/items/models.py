@@ -55,7 +55,7 @@ class Equipment(models.Model):
 class Step(models.Model):
     title = models.CharField(max_length=256, default='xxxxx-xx-step')
     ingredients_for_step = models.ManyToManyField(UnitIngredient)
-    description = models.CharField(max_length=256)
+    description = models.TextField()
 
     class Meta:
         db_table = 'steps'
