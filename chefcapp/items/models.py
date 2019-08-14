@@ -53,11 +53,13 @@ class Equipment(models.Model):
 
 
 class Step(models.Model):
-    number = models.PositiveSmallIntegerField()
+    title = models.CharField(max_length=256)
+    ingredients_for_step = models.ManyToManyField(UnitIngredient)
     description = models.CharField(max_length=256)
 
     class Meta:
         db_table = 'steps'
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=256)
