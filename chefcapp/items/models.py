@@ -61,6 +61,7 @@ class Step(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=256, default='Recipe Title')
+    publish = models.BooleanField(default=false)
     ingredient = models.ManyToManyField(UnitIngredient)
     steps = models.ManyToManyField(Step)
 
