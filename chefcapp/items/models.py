@@ -23,9 +23,9 @@ class Unit(models.Model):
     ]
 
     units = models.CharField(
-        max_length = 2,
-        choices = unit_choices,
-        default = unspecified,
+        max_length=2,
+        choices=unit_choices,
+        default=unspecified,
     )
 
     class Meta:
