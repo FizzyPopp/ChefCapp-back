@@ -23,7 +23,7 @@ class Unit(models.Model):
 
 
 class UnitIngredient(models.Model):
-    quantity = models.DecimalField(max_digits=6, decimal_places=2)
+    quantity = models.DecimalField(max_digits=6, decimal_places=2, default=0)
 
     unit = models.ForeignKey(
         Unit,
