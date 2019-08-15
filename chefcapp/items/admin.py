@@ -6,7 +6,7 @@ from .models import Recipe
 from .models import Step
 
 class HorizontalRecipe(admin.ModelAdmin):
-    filter_horizontal = ('steps',)
+    filter_horizontal = ('ingredient','steps',)
 
 
 class HorizontalStep(admin.ModelAdmin):
