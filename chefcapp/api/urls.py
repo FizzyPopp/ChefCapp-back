@@ -1,8 +1,7 @@
 from django.conf.urls import url
 
-from .views import UserDetailView
+from .views import RecipeListView
 
 urlpatterns = [
-    url(r'^users/?$', UserDetailView.as_view(), name='user_api'),
+    url(r'^recipes/?$', RecipeListView.as_view(), name='recipe_api'),
 ]
-

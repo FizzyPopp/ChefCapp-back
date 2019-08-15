@@ -1,9 +1,9 @@
-from django.contrib.auth.models import User
 from rest_framework import serializers
 
+from chefcapp.items.models import Recipe
 
-class UserDetailSerializer(serializers.ModelSerializer):
+
+class RecipeDetailSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = Recipe
         fields = '__all__'
-

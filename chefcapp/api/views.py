@@ -1,9 +1,9 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 
-from .serializers import UserDetailSerializer
+from .serializers import RecipeDetailSerializer
+from chefcapp.items.models import Recipe
 
 
 class AuthView(APIView):
@@ -24,7 +24,6 @@ class AuthView(APIView):
         return Response({})
 
 
-class UserDetailView(ListAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserDetailSerializer
-
+class RecipeListView(ListAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeDetailSerializer
