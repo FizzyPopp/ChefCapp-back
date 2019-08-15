@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 
 from .serializers import RecipeDetailSerializer
-from chefcapp.items.models import Recipe
+from items.models import Recipe
 
 
 class AuthView(APIView):
