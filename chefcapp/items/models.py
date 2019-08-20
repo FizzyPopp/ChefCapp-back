@@ -22,12 +22,64 @@ class Unit(models.Model):
         return self.name
 
 
+class SubType(models.Model):
+    type = models.CharField(max_length=256, default='Ingredient Sub Type')
+
+    class Meta:
+        db_table = 'subtype'
+
+    def __str__(self):
+        return self.type
+
+
+class SubSize(models.Model):
+    size = models.CharField(max_length=256, default='Ingredient Sub Size')
+
+    class Meta:
+        db_table = 'subsize'
+
+    def __str__(self):
+        return self.size
+
+
+class SubState(models.Model):
+    state = models.CharField(max_length=256, default='Ingredient Sub State')
+
+    class Meta:
+        db_table = 'substate'
+
+    def __str__(self):
+        return self.state
+
+
 class UnitIngredient(models.Model):
-    quantity = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    quantity = models.PositiveIntegerField(default=0)
 
     unit = models.ForeignKey(
         Unit,
         on_delete=models.CASCADE,
+        default=0,
+    )
+
+    state = models.ForeignKey(
+        SubState,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
+
+    size = models.ForeignKey(
+        SubSize,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
+
+    type = models.ForeignKey(
+        SubType,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
 
     ingredient = models.ForeignKey(
@@ -36,7 +88,14 @@ class UnitIngredient(models.Model):
     )
 
     def __str__(self):
-        return '{} - {} {}'.format(self.ingredient, self.quantity, self.unit)
+        return '{}{}{} {} - {} {}'.format(
+            '{} '.format(self.state) if self.state else '',
+            '{} '.format(self.size) if self.size else '',
+            '{} '.format(self.type) if self.type else '',
+            self.ingredient,
+            self.quantity,
+            self.unit
+        )
 
 
 class Equipment(models.Model):
@@ -62,7 +121,7 @@ class Step(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=256, default='Recipe Title')
     publish = models.BooleanField(default=False)
-    ingredient = models.ManyToManyField(UnitIngredient)
+    ingredients = models.ManyToManyField(UnitIngredient)
     steps = models.ManyToManyField(Step)
 
     class Meta:
